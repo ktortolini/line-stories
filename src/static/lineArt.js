@@ -5,35 +5,6 @@
  * @date on 05/11/2024
  */
 
-
-class Sphere {
-
-	constructor(xParam, yParam, zParam, rParam, wParam, sParam, fParam) {
-		this.x = xParam;
-		this.y = yParam;
-		this.z = zParam;
-		this.r = rParam;
-		this.w = wParam;
-		this.s = sParam;
-		this.f = fParam;
-	}
-
-	draw() {
-		stroke(this.s);
-		fill(this.f);
-		strokeWeight(this.w);
-
-		/**/
-
-		push();
-		texture(img);
-		translate(this.x, this.y, this.z);
-		sphere(this.r);
-		pop();
-	}
-
-};
-
 // deno-lint-ignore no-unused-vars
 function setup() {
 	/**
@@ -41,11 +12,11 @@ function setup() {
 	 * see: {@link https://p5js.org/reference/#/p5/createCanvas}
 	 */
 
-	const canvas = createCanvas(2048, 1080, WEBGL);
+	const canvas = createCanvas( 2048, 1080 );
 
 	/**/
 
-	canvas.parent('threeDee');
+	canvas.parent('lineArt');
 
 	/**
 	 * This application uses p5.js and p5 smooth() method,
@@ -54,46 +25,70 @@ function setup() {
 
 	smooth(3);
 
-	textureMode(NORMAL);
-
 	/**/
 
-	redPlanetPrimo = new Sphere(0, 90, 10, 156, 0.9, 6, 15);
+	background( 0, 0, 0 );
+
+	/**
+	 * This is the first attempt at line art using points.
+	 */
+
+	const pointCount = 300;
+	const gapCount = width / (pointCount - 1);
+
+	for ( let i = 0; i < pointCount; i++ ) {
+
+		stroke( random(255) - i, random(255) - i, random(255) - i );
+		strokeWeight( random( 1, 145 ) );
+		point( gapCount * i, height / random( 1, 2.5) + random( -190, 190 ) );
+
+	}
+
+	/**
+	 * This is the second attempt at line art using points.
+	 */
+
+	for ( let i = 0; i < pointCount; i++ ) {
+
+		stroke( random( 255 ), random( 255 ), random( 0, 15 ) );
+		strokeWeight( random( 1, 30 ) );
+		point( gapCount * i, height / 2 + ( i * i) * 0.0045 );
+
+	}
 
 }
 
-function createCelestial(x, y, z, r) {
-	/**/
+/**
+ * This is the third attempt at line art using points.
+ */
 
-	push();
+// const x = 0.0;
+// const y = 0.0;
 
-	translate(width / x, height / y);
+// const spd = 1.0;
 
-	/**/
+let theta = 0.0;
+const amp = 100.0;
+const freq = 3.14159 / 180 * 15.0;
 
-	rotateX(r);
-
-	/**/
-
-	rotateY(millis() / z);
-
-	/**/
-
-	redPlanetPrimo.draw();
-
-	pop();
-
-	/**/
-}
+let w = 0.0;
+let h = 0.0;
 
 // deno-lint-ignore no-unused-vars
 function draw() {
-	background(0, 0, 0);
 
-	/**/
+	/**
+    * This is the third attempt at line art using points.
+    */
 
-	for (let i = 0; i < 99; i++) {
-		createCelestial(192 + (i / 1.25), 45 - (i / 12.25), 4 - Math.random(), 166.3452);
+	strokeWeight( random( 1, 8 ) );
+	stroke( 0, 0, 0 );
+	h = w = sin(theta) * amp;
+	rect( width / 2 - w / 2, height / 2 - h / 2, w, h );
+	theta += freq;
+
+	for ( let i = 0; i < 400; i++ ) {
+		stroke( 0 + random( 255 ), 0 + i, 0 );
+		line( 100 * i, height / 2.5 + ( i * i) * 0.0045, 200 * i, height / 1.5 + ( i * i) * 0.0045 );
 	}
-
 }
