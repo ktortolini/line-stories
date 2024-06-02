@@ -36,7 +36,7 @@ deno cache serve.ts
 
 ## 🔥 _Usage Information_
 
-Currently, the canvas displays a singular piece, purposefully chosen to introduce programmatic three dimensional art, which is created through a combination of `p5.js` and `WEBGL`. First, a blank canvas greets you with a rotating sphere that evokes the red surface of `Mars`. Each movement reveals more of the texture that wraps the sphere.
+Currently, the canvas displays a singular piece, with different variations, purposefully chosen to cover harmony and contrast of color. When hitting the `refresh` button, the canvas will display a new color variation.
 
 ## 🦕 _Deno Deployment_
 
