@@ -40,7 +40,7 @@ Currently, the canvas displays a singular piece, purposefully chosen to introduc
 
 ## 🦕 _Deno Deployment_
 
-This project was deployed on [Deno Deploy](https://the-red-planet.deno.dev/).
+This project was deployed on [Deno Deploy](https://creative-line-stories.deno.dev/).
 
 ## 💬 _Questions_
 
