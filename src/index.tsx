@@ -1,4 +1,4 @@
 const title = 'Portfolio';
-const layout = './pages/lineArt.tsx';
+const layout = './pages/shapeArt.tsx';
 
 export { title, layout };
